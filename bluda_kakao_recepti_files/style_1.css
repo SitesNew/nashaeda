@@ -1,0 +1,915 @@
+* {
+    font-size: 14px;
+    font-family: PT Sans;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    margin: 0;
+}
+
+p {
+    margin-bottom: 5px;
+    margin-top: 3px;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+a {color: #3c0909;}
+
+a:hover { color: #813318;}
+
+.header {
+    height: 460px;
+    background: url('/img/bg.png') repeat-x center;
+}
+
+.header_bg {
+    height: 460px;
+    background: url('/img/bg.jpg') no-repeat center;
+}
+
+.top {
+    background:  url('/img/black.png');
+    height: 60px;
+    padding-top: 10px;
+}
+
+.top2 {
+    background:  url('/img/menu.jpg') #260f08 no-repeat center;
+    height: 60px;
+    position: fixed;
+    width:100%;
+    z-index: 10;
+    left: 0;
+}
+
+
+.logo {
+    padding-right: 20px;
+    padding-top: 10px;
+    float: left;
+}
+
+.desc {
+    float: left;
+    font-family: Georgia;
+    font-style: italic;
+    color: #ffffff;
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+
+.menu {
+    float: right;
+    position: relative;
+}
+
+
+.menu a {
+    display:block;
+    float:left;
+    margin-right: 20px;
+    padding: 1px 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.menu a:hover, #menu a.active, .menu .article:hover>a {
+    background: #000000;
+}
+
+.col_c {
+    width: 230px;
+    padding: 5px;
+    margin-top: 100px;
+    color: #ffffff;
+    text-align: center;
+    float: left;
+
+}
+
+
+.col_c:hover {
+    width: 230px;
+    padding: 5px;
+    margin-top: 100px;
+    color: #ffffff;
+    text-align: center;
+    float: left;
+    background: url('/img/black.png');
+    border-radius: 10px;
+
+}
+
+.col_c a{
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.info {
+    background: #f6d8c4;
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+
+.info h1, .info div.h1, .info div.h1 a {
+    color: #521a07;
+    font-size: 24px;
+    font-weight: normal;
+    margin-top: 0;
+    padding-top: 20px;
+}
+.info div.h1 {
+    margin-bottom: 16px;
+
+}
+
+.info p {
+    text-size: 15px;
+}
+
+.quest {
+    background: #f1c2a8;
+    border-radius: 10px;
+    padding: 5px 10px 10px 10px;
+    margin-top: 20px;
+}
+
+.quest strong {
+    margin-top: 3px;
+}
+
+.rating {
+    background: #6c9964;
+    color: #ffffff;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.rating_title {
+    background: #598552;
+    height: 65px;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+a.rating_all {
+    background: #598552;
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+	font-size: 18px;
+}
+a.vote {
+    background: #ab704f;
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+input.vote
+{
+    background: #ab704f;
+    padding:5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+a.rating_all:hover {
+    background: #4f4f4f;
+}
+
+
+
+.col, div.shop-best-flat-v2 {
+    width: 240px;
+    float: left;
+    padding-top: 20px;
+}
+
+.rating_title .col {
+    font-size: 18px;
+    padding-top: 10px;;
+}
+
+.art {
+    background: #f6d8c4;
+    overflow: hidden;
+}
+
+.art .col {
+    padding-bottom: 20px;
+}
+
+.art .group {
+    width: 240px;
+    float: left;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.art .group a {
+    font-size: 18px;
+    color: #3c0909;
+}
+
+.art .group img {
+    opacity: 0.9;
+}
+
+.art .group img:hover {
+    opacity: 1;
+}
+
+.art .group a:hover {
+    font-size: 18px;
+    color: #000000;
+}
+
+.art-link {
+
+margin-bottom: 5px;
+font-family: tahoma; 
+font-size: 14px; 
+text-decoration: underline;
+
+}
+
+
+.art-link a {
+
+color: #5a4037;
+font-family: tahoma; 
+font-size: 14px; 
+text-decoration: underline;
+
+}
+
+.art-link a:hover {
+
+color: #813318;
+
+}
+
+.all-link {
+
+color:  #6d6e71;
+
+}
+
+
+.all-link:hover {
+
+color: #813318;
+
+}
+
+.extra-link {
+
+padding-bottom: 15px;
+font-family: tahoma; 
+font-size: 14px; 
+text-decoration: underline;
+
+}
+
+.extra-link a {
+
+color: #5a4037;
+font-family: tahoma; 
+font-size: 14px; 
+text-decoration: underline;
+cursor: pointer;
+
+}
+
+.extra-link a:hover {
+
+color: #813318;
+
+}
+
+
+.footer {
+    margin-top: -6px;
+    background:  url('/img/footer.png');
+    height: 100px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.art a{
+    color: #000000;
+    text-size: 15px;
+}
+
+.art_more {
+    clear:both;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.art_more a {
+    padding: 5px 15px;
+    color: #ffffff;
+    font-size: 18px;
+    background: #779567;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.art_more a:hover {
+    background: #6db944;
+
+}
+
+.col_left {
+    float: left;
+    width: 900px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+.col_right {
+    float: left;
+    width: 470px;
+    padding-bottom: 20px;
+}
+
+.art_pic {
+    float: left;
+    margin-right: 5px;
+}
+
+.art_text {
+    float: justify;
+    text-align: justify;
+    width: 780px;
+    padding-left: 10px;
+}
+
+h1, div.h1, div.h1 a {
+    color: #521a07;
+    font-size: 32px;
+    font-weight: normal;
+}
+div.h1 {
+    margin-bottom: 16px;
+}
+
+.golos {
+    display: none;
+}
+
+.golos_main {
+    display: block;
+
+}
+
+.golos_main:hover .golos{
+    display: block;
+}
+
+
+.article {
+    display: inline;
+
+}
+
+.menu .article a{
+    display:block;
+    float:left;
+    margin-right: 20px;
+    padding: 1px 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+
+}
+
+.submenu {
+    display: none;
+    background-color: inherit;
+}
+
+.menu .article:hover .submenu{
+    background: #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 60px;
+    left: -470px;;
+    display: block;
+    width: 1000px;
+    z-index: 100;
+    opacity: 1;
+    padding-bottom: 20px;
+}
+
+.menu .submenu a {
+     display: block;
+     float: none;
+     line-height: 30px;
+     margin-left: 20px;
+ }
+
+.menu .submenu a:hover {
+     display: block;
+     float: none;
+     line-height: 30px;
+     background: #813318;
+     border-radius: 5px;
+ }
+
+
+.submenu_1 {
+    display: none;
+    background-color: inherit;
+}
+
+.menu .article:hover .submenu_1{
+    background: #000000;
+    border-radius: 10px;
+    position: absolute;
+    top: 60px;
+    display: block;
+    width: 300px;
+    opacity: 1;
+    padding-bottom: 20px;
+}
+
+.menu .submenu_1 a {
+     display: block;
+     float: none;
+     line-height: 30px;
+     margin-left: 20px;
+ }
+
+.menu .submenu_1 a:hover {
+     display: block;
+     float: none;
+     line-height: 30px;
+     background: #813318;
+     border-radius: 5px;
+ }
+
+
+
+.news {
+    background: #f1c2a8;
+    overflow: hidden;
+}
+
+.art_title_pic {
+    float:left;
+    width: 300px;
+    margin-right: 30px;
+    margin-top: 100px;
+}
+
+.art_title {
+    float:left;
+    width: 600px;
+    margin-top: 120px;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.art_title p{
+    font-size: 16px;
+}
+
+.art_title h1 {
+    color: #ffffff;
+}
+
+.article_text {
+    float: left;
+    width: 805px;
+    margin-top: 30px;
+
+}
+
+
+
+.article_text .gallery {
+overflow:hidden; border: 1px solid #E8CCA3; text-align: left;
+margin-top: 0px; margin-bottom: 0px; margin-left: 0px;
+margin-right: 0px; background-color: #FAFFF3; padding: 10px;
+border-radius: 7px; font-size: 13px; line-height: 1.6;
+margin: 0 0 0 0; border: 0px solid #CC9933;
+}
+
+.article_text .gallery img {
+margin: 0 auto; border: 0px solid #CC9933;
+}
+
+.article_text p{
+    text-align: justify;
+    font-size: 15px;
+}
+
+.article_text h1{
+    text-align: left;
+    font-size: 32px;
+    margin: -20px 0 0px 0;
+}
+
+.article_right {
+    float:right;
+    width: 170px;
+    margin-left: 5px;
+}
+
+strong {
+    color: #521a07;
+    font-size: 20px;
+    font-weight: normal;
+
+}
+
+.article_reklama {
+    float:right;
+    width: 170px;
+    margin-left: 5px;
+}
+
+.article_right p {
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-top: 14px;
+    text-align: left;
+    font-size: 16px;
+}
+
+
+.article_right a {
+    background: #b36448;
+    padding: 5px 10px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+}
+
+.article_right a:hover {
+    background: #5a4037;
+    padding: 5px 10px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+}
+
+.left_col {
+      width: 440px;
+      float:left;
+      padding-right: 40px;
+  }
+
+.right_col {
+    width: 440px;
+    float:left;
+}
+
+a.show {
+    border-bottom: 1px dashed #000;
+    text-decoration: none;
+}
+
+.ad {
+     border-top: 1px solid #d48e7d;
+     margin: 20px 0;
+     overflow: hidden;
+     color: #963c3c;
+     padding-top: 20px;
+ }
+
+.ad a{
+
+    color: #963c3c;
+}
+
+.podpis {
+font-size: 11px;
+text-align: right;
+}
+
+
+.rig3
+
+{
+
+	float:left;
+
+	margin:0px 0 0px 5px;
+
+	border:0px;
+
+}
+
+.rig5
+
+{
+
+	float:center;
+
+	margin:0px 0 0px 0px;
+
+	border:0px;
+
+}
+
+
+
+.rig4
+
+{
+
+	float:right;
+
+	margin:0px 0 0px 0px;
+
+	border:0px;
+
+}
+
+
+
+.right7 {float: right; margin: 5px 0 0 12px; border: 1px solid #d48e7d;}
+
+.𠯠{float: center; margin: 5px 0 0 12px; border: 1px solid #CC9933;}
+
+
+div.news div.wrapper div.Catalog div.NewDiv {
+    clear: both;
+}
+
+
+.dr-catalog-content img, .block-container img {
+  border: 0 none;
+  margin: 0;
+}
+
+
+.best-flat-v2-name > a {
+    color: #FFFFFF;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.info_link {
+overflow: hidden;
+border: 1px solid #E8CCA3;
+text-align: left;
+margin: 12px 0 5px 0;
+background-color: #FAFFF3;
+padding: 10px;
+font-size: 13px;
+line-height: 1.6;
+border-radius: 7px;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+}
+
+
+#nav{
+	float:left;
+	width:100%;
+	list-style:none;
+	margin-bottom:10px;
+}
+#nav li{
+	float:left;
+	margin-right: 16px;
+	position:relative;
+	display:block;
+}
+#nav li a{
+	display:block;
+	padding:5px;
+    color: #ffffff;
+    text-decoration: none;
+	border-radius:2px;
+    font-size: 18px;
+}
+#nav li a:hover{
+	text-decoration:none;
+}
+
+
+/*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
+#nav ul{
+	list-style:none;
+	position:absolute;
+	left:-9999px; /*Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
+	opacity: 0.1; /* Устанавливаем начальное состояние прозрачности */
+    margin-top: 20px;
+    margin-left: -38px;
+    text-align: justify;
+
+}
+#nav ul li{
+	padding-top:1px; /* Вводим отступ между li чтобы создать иллюзию разделенных пунктов меню */
+    height: 5px;
+}
+#nav ul a{
+    white-space: pre-wrap;
+	display:block;
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 200px;
+    font-family: Verdana;
+    font-size: 13px;
+    font-weight: normal;
+    padding-left: 12px;
+    text-align: left;
+}
+#nav li:hover ul{ /* Выводим выпадающий пункт при наведении курсора */
+	left:0; /* Приносим его обратно на экран, когда нужно */
+	opacity:1; /* Делаем непрозрачным */
+}
+#nav li:hover a{ /* Устанавливаем стили для верхнего уровня, когда выводится выпадающий список */
+	text-decoration:none;
+}
+#nav li:hover ul a{ /* Изменяем некоторые стили верхнего уровня при выводе выпадающего пункта */
+	text-decoration:none;
+	-webkit-transition:-webkit-transform 0.075s linear;
+}
+#nav li:hover ul li a:hover{ /* Устанавливаем стили для выпадающих пунктов, когда курсор наводится на конкретный пункт */
+	text-decoration:underline;
+	-moz-transform:scale(1);
+	-webkit-transform:scale(1.05);
+}
+
+.news-ann-img {
+  padding-right: 20px;
+}
+
+.rtabs-1 {
+
+/* background: red!important; */
+
+}
+
+
+.rtabs-1 label, a.block-other-city {
+
+ /* color: blue !important; */
+
+}
+
+/* rules for the article block */
+
+#extra{
+	float: left;
+	width:100%;
+	list-style:none;
+	margin-bottom:10px;
+	display: block;
+}
+#extra li{
+	float: left;
+	margin-right: 16px;
+	position: relative;
+	display:block;
+}
+
+
+#extra li a:hover{
+	text-decoration:none;
+}
+
+/*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
+#extra ul{
+	list-style:none;
+	position:absolute;
+	left:-9999px; /*Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
+	opacity: 0.1; /* Устанавливаем начальное состояние прозрачности */
+    margin-top: 20px;
+    margin-left: 0px;
+    text-align: justify;
+    padding: 0;
+    }
+
+#extra ul li {
+	padding-top:1px; /* Вводим отступ между li чтобы создать иллюзию разделенных пунктов меню */	
+	height: 5px;
+	
+}
+
+#extra ul a {
+
+    white-space: pre-wrap;
+    display:block;
+    background-color: #000000;
+    color: #FFFFFF;
+    width: 200px;
+    font-family: Verdana;
+    font-size: 13px;
+    font-weight: normal;
+    padding-left: 12px;
+    text-align: left;
+    
+}
+
+#extra li:hover ul {    /* Выводим выпадающий пункт при наведении курсора */
+    left:0;     /* Приносим его обратно на экран, когда нужно */
+    opacity:1;    /* Делаем непрозрачным */
+}
+
+#extra li:hover a {
+	text-decoration:none;
+}
+
+#extra li:hover ul a { 
+	text-decoration:none;
+	-webkit-transition:-webkit-transform 0.075s linear;
+}
+
+
+#extra li:hover ul li a:hover { 
+	text-decoration:underline;
+	-moz-transform:scale(1.05);
+	-webkit-transform:scale(1.05);
+}
+
+/* rules for the news-last4-news block */
+
+#block-articles .block-row {
+
+display: inline-block; 
+vertical-align: top;
+
+}
+
+#block-articles .news-anons {
+
+margin-left: 3px; 
+margin-right: 3px;
+
+}
+
+#block-articles .news-anons p {
+
+max-width: 182px; 
+height: 55px;
+font-size: 30%;
+line-height: 1;
+overflow: hidden;
+}
+
+
+
+.collapse-sidebar {
+    display: none;
+}   
+
+
+.collapse-sidebar + input{
+  display:none;
+}
+
+#pda-on {
+    background: #5a4037 none repeat scroll 0 0;
+    text-align:center;
+    padding: 5px;
+}
+
+#pda-off {
+    background: #5a4037 none repeat scroll 0 0;
+    display: none;
+    text-align:center;
+    padding: 5px;
+}
+
+#pda-off a, #pda-on a {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+
+
+@media (min-width: 800px) { 
+    #pda-on {
+        display:none !important;
+    }
+}

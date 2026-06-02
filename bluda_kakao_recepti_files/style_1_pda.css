@@ -1,0 +1,249 @@
+
+@media (max-width: 800px) {
+
+        body {
+            background: #f6d8c4;
+        }
+        
+        .header {
+            display: none;
+        }
+        
+        #nav ul {
+            left: 0;
+            margin: 0;
+            opacity: 1;
+            padding: 0 0 0 15px;
+            position: relative;
+        }
+        #nav li {
+            display: table;
+            float: none;
+        }
+        .top2 {
+            position: absolute;
+        }
+        #nav {
+            background: black none repeat scroll 0 0;
+            box-shadow: -3px 6px 17px -4px rgba(0, 0, 0, 0.75);
+            padding: 2px;
+            position: absolute;
+            right: 6px;
+            top: 50px;
+            width: 210px;
+            z-index: 18;
+        }
+        #nav ul a {
+            margin: 0;
+            padding: 0;
+            width: 190px;
+        }
+        #nav br {
+            content: " ";
+            display: none;
+        }
+        .table-logo {
+            margin-top: -5px !important;
+            position: absolute;
+            top: 0;
+        }
+        .rtabs-1 label, a.block-other-city, .rtabs-2 label, a.block-other-city, .rtabs-5 label, a.block-other-city, .rtabs-7 label, a.block-other-city {
+            line-height: 33px !important;
+            white-space: nowrap !important;
+        }
+        div.infobox {
+            float: none !important;
+            margin: 0 auto !important;
+            width: 80% !important;
+        }
+        .Choose-search .search-text {
+            width: 56% !important;
+        }
+        .Choose-search {
+            float: none !important;
+            width: 100% !important;
+        }
+        .Choose-map-button {
+            display: block;
+            margin: 0 !important;
+            width: 100% !important;
+        }
+        .Choose-map-button .btn {
+            margin-top: 10px;
+            width: 100% !important;
+        }
+        .news-det-right {
+            margin-left: 0 !important;
+        }
+        .news-list-right {
+            margin-left: 0 !important;
+        }
+        .news-list-logo {
+            float: none !important;
+        }
+        .collapse-sidebar {
+            color: white;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .collapse-sidebar + input + * {
+            display: none;
+        }
+        .collapse-sidebar + input:checked + * {
+            display: block;
+        }
+        .collapse-sidebar > img {
+            background: #5a4037  none repeat scroll 0 0;
+            border: 2px solid white;
+            margin-right: 3px;
+            margin-top: 12px;
+            width: 32px;
+        }
+        #pda-off {
+            background: #5a4037 none repeat scroll 0 0;
+            display: block;
+            padding: 5px;
+        }
+        .map-block-full-link {
+            margin-left: 15px !important;
+            margin-right: 15px !important;
+        }
+        .new-shops td {
+            display: block;
+            text-align: center;
+            width: 100% !important;
+        }
+        .wrapper {
+            margin: 0 auto;
+            width: 98%;
+        }
+        .info > div {
+            /*display: table;*/
+            float: none !important;
+            margin: 0 auto;
+            width: 100% !important;
+        }
+        #block-articles > div {
+            height: auto !important;
+            width: 100% !important;
+        }
+        #block-articles {
+            float: none;
+            width: 100%;
+        }
+        #block-articles > div > div {
+            height: auto !important;
+            margin: 0 auto !important;
+            width: 95% !important;
+        }
+        .article_text {
+            width: 100%;
+        }
+        .info {
+            margin: 0 auto;
+            width: 98%;
+        }
+        #block-articles .block-row {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+        #block-articles .news-anons p {
+            max-width: 100%;
+        }
+
+        div#block-articles div div p {
+            left: 0 !important;
+            right: 9px;
+            top: 0 !important;
+        }
+
+
+        .desc {
+            display: none;
+        }
+        .footer table td {
+            display: block;
+        }
+        .footer {
+            background: #5a4037 none repeat scroll 0 0;
+            height: auto !important;
+        }
+        div#block-articles > div:last-child {
+          padding-bottom: 10px !important;
+        }
+
+
+        .rating_title {
+            display: none;
+        }
+        .shop-best-flat-v2 {
+            text-align: center;
+        }
+        .col, div.shop-best-flat-v2 {
+            float: none;
+            width: 100% !important;
+        }
+
+        .left_col, .right_col {
+          width: 100%;
+          float: none;
+        }
+
+        .ad {
+          padding-top: 70px;
+        }
+        
+        .col_left, .art_text {
+          width: 99% !important;
+        }        
+}
+
+@media (max-width: 600px) {
+    .det-card-logo {
+        display: block !important;
+        margin: 0 auto;
+        padding-top: 10px;
+        position: relative !important;
+    }
+
+
+    div.shopcomment-form-div div.wysibb {
+        display: block !important;
+    }
+    .shcomm-right {
+        display: block !important;
+        padding-left: 0 !important;
+    }
+    .shcomm-left {
+        display: block !important;
+        float: none !important;
+        width: 100% !important;
+    }
+    div.form .shcomm-bottom .buttons {
+        padding-left: 0 !important;
+    }
+
+
+    .shop_ui {
+        display: inline-block !important;
+        float: none !important;
+        margin-top: 5px;
+    }
+    .shop_worker_info {
+        text-align: center !important;
+    }
+
+
+    div.dr-catalog-creds {
+        float: none !important;
+        margin-left: 0 !important;
+        padding-top: 10px !important;
+        text-align: right !important;
+    }
+
+
+}

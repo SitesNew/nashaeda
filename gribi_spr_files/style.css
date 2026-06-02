@@ -1,0 +1,47 @@
+#superbest 
+{Z-INDEX: 10; LEFT: 15px; VISIBILITY: visible; WIDTH: 125px; POSITION: absolute; TOP: 100px}
+
+A:active
+{
+font: bold;
+color: white;
+text-decoration: underline
+}
+
+A:visited
+{
+font: bold;
+color: #669966;
+text-decoration: underline
+}
+
+A:link
+{
+Font: bold;
+color: #496D49;
+text-decoration: underline
+}
+
+A:hover
+{
+font: bold;
+color: #AECAAE;
+text-decoration: underline
+}
+BODY
+	{ color: #496D49;
+
+		
+background-color=#FDFDDE;
+		font-family: times new roman;
+		font-size="+2"
+		SCROLLBAR-HIGHLIGHT-COLOR: #496D49; 
+		SCROLLBAR-SHADOW-COLOR: #496D49; 
+		SCROLLBAR-ARROW-COLOR: #496D49;
+		SCROLLBAR-TRACK-COLOR: #AECAAE; 
+		SCROLLBAR-BASE-COLOR: #FDFDDE; 
+		scrollbar-3d-light-color: #FFFFFF ;
+		scrollbar-dark-shadow-color: #496D49;
+	}
+
+

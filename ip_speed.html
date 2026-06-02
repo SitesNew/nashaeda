@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌐 IP Детектор & Інфо</title>
+    <style>
+        :root {
+            --bg-primary: #0f0c29; --bg-secondary: #302b63; --bg-tertiary: #24243e;
+            --text-primary: #e0e0e0; --text-secondary: #aaa; --text-muted: #8892b0;
+            --card-bg: rgba(255,255,255,0.06); --card-border: rgba(255,255,255,0.1);
+            --accent-cyan: #00d2ff; --accent-blue: #3a7bd5; --accent-pink: #f953c6;
+            --input-bg: rgba(255,255,255,0.08); --input-border: rgba(255,255,255,0.2);
+            --shadow: rgba(0,0,0,0.3);
+        }
+        [data-theme="light"] {
+            --bg-primary: #f0f4f8; --bg-secondary: #d9e2ec; --bg-tertiary: #bcccdc;
+            --text-primary: #243b53; --text-secondary: #486581; --text-muted: #6b8096;
+            --card-bg: rgba(255,255,255,0.85); --card-border: rgba(0,0,0,0.08);
+            --accent-cyan: #0077b6; --accent-blue: #023e8a; --accent-pink: #d62828;
+            --input-bg: rgba(0,0,0,0.05); --input-border: rgba(0,0,0,0.15);
+            --shadow: rgba(0,0,0,0.1);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary), var(--bg-tertiary));
+            min-height: 100vh; color: var(--text-primary); display: flex; flex-direction: column;
+            align-items: center; padding: 20px; transition: background 0.5s, color 0.3s;
+        }
+        .theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+        .theme-toggle input { display: none; }
+        .theme-toggle label {
+            display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 50px;
+            cursor: pointer; backdrop-filter: blur(10px); box-shadow: 0 4px 15px var(--shadow); transition: .3s;
+        }
+        .theme-toggle label:hover { transform: scale(1.05); }
+        .toggle-icon { font-size: 1.3rem; }
+        .toggle-switch { width: 50px; height: 26px; background: var(--input-bg); border-radius: 50px; position: relative; transition: .3s; }
+        .toggle-switch::after {
+            content: ''; position: absolute; width: 22px; height: 22px; background: var(--accent-cyan);
+            border-radius: 50%; top: 2px; left: 2px; transition: .3s; box-shadow: 0 2px 5px var(--shadow);
+        }
+        [data-theme="light"] .toggle-switch::after { transform: translateX(24px); background: var(--accent-blue); }
+        
+        header { text-align: center; margin-bottom: 30px; margin-top: 20px; }
+        header h1 {
+            font-size: 2.2rem; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-pink));
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: grad 3s infinite;
+        }
+        header p { margin-top: 8px; color: var(--text-secondary); }
+        @keyframes grad { 0%,100%{background-position:0% center} 50%{background-position:200% center} }
+
+        .container { display: flex; flex-wrap: wrap; gap: 25px; max-width: 1100px; width: 100%; justify-content: center; }
+        .card {
+            background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px;
+            padding: 28px 25px; flex: 1 1 420px; max-width: 530px; backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px var(--shadow); transition: transform .3s, background .3s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .card h2 { font-size: 1.4rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+
+        .ip-input-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+        .ip-input-group input {
+            flex: 1; min-width: 150px; padding: 10px 14px; border-radius: 8px;
+            border: 1px solid var(--input-border); background: var(--input-bg);
+            color: var(--text-primary); font-size: 0.95rem; outline: none; transition: .2s;
+        }
+        .ip-input-group input:focus { border-color: var(--accent-cyan); }
+        .ip-input-group input::placeholder { color: var(--text-muted); }
+
+        .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--card-border); }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { font-weight: 600; color: var(--text-muted); font-size: 0.9rem; }
+        .info-value { font-weight: 700; color: var(--text-primary); text-align: right; max-width: 55%; word-break: break-all; }
+        .info-value.highlight { color: var(--accent-cyan); font-size: 1.1rem; }
+        .info-value.mono { font-family: 'Consolas', monospace; font-size: 0.85rem; }
+
+        /* Стилі для карти та маркера */
+        .map-container { margin-top: 18px; border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border); height: 220px; background: var(--input-bg); display: flex; align-items: center; justify-content: center; position: relative; }
+        .map-container iframe { width: 100%; height: 100%; border: none; filter: grayscale(10%) contrast(90%); }
+        .map-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            font-size: 3rem;
+            z-index: 10;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+            animation: bounce 1.5s infinite;
+            pointer-events: none; /* Щоб можна було клікати на карту крізь маркер */
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -100%); }
+            50% { transform: translate(-50%, -120%); }
+        }
+
+        .status-box { margin-top: 15px; padding: 12px; border-radius: 8px; background: var(--input-bg); text-align: center; font-size: 0.9rem; min-height: 44px; transition: .3s; }
+        .status-box.error { background: rgba(249,83,198,0.15); color: var(--accent-pink); }
+        .status-box.success { background: rgba(0,210,255,0.15); color: var(--accent-cyan); }
+
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .service-card {
+            background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 12px;
+            padding: 15px; text-align: center; transition: .3s; cursor: pointer; text-decoration: none; color: inherit; display: block;
+        }
+        .service-card:hover { background: var(--card-border); transform: translateY(-3px); }
+        .service-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+        .service-name { font-weight: 700; font-size: 1rem; margin-bottom: 5px; display: block; }
+        .service-desc { font-size: 0.75rem; color: var(--text-muted); display: block; line-height: 1.3; }
+        .service-btn { 
+            display: inline-block; margin-top: 10px; padding: 6px 12px; font-size: 0.8rem; 
+            background: var(--accent-blue); color: #fff; border-radius: 20px; font-weight: 600;
+        }
+
+        footer { margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+        @media(max-width: 600px) { header h1{font-size:1.5rem} .card{padding:20px} .theme-toggle{top:10px; right:10px;} .services-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle">
+        <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+        <label for="themeSwitch"><span class="toggle-icon" id="themeIcon"></span><span class="toggle-switch"></span></label>
+    </div>
+
+    <header>
+        <h1>🌐 IP Детектор & Інфо</h1>
+        <p>Детальна інформація про IP-адресу | Професійні сервіси швидкості</p>
+    </header>
+
+    <div class="container">
+        <!-- КАРТКА 1: РОЗШИРЕНА ІНФОРМАЦІЯ ПРО IP -->
+        <div class="card">
+            <h2>📍 Детальна інформація про IP</h2>
+            <div class="ip-input-group">
+                <input type="text" id="manualIpInput" placeholder="Введіть IP (напр. 8.8.8.8)">
+                <button class="btn" onclick="lookupManualIP()">🔍 Знайти</button>
+            </div>
+            <div id="ipRows">
+                <div class="info-row"><span class="info-label">IP-адреса</span><span class="info-value highlight mono" id="ipVal">⏳ Визначається...</span></div>
+                <div class="info-row"><span class="info-label">Країна</span><span class="info-value" id="countryVal">—</span></div>
+                <div class="info-row"><span class="info-label">Місто</span><span class="info-value" id="cityVal">—</span></div>
+                <div class="info-row"><span class="info-label">Регіон</span><span class="info-value" id="regionVal">—</span></div>
+                <div class="info-row"><span class="info-label">Поштовий індекс</span><span class="info-value" id="postalVal">—</span></div>
+                <div class="info-row"><span class="info-label">Провайдер (ISP)</span><span class="info-value" id="ispVal">—</span></div>
+                <div class="info-row"><span class="info-label">🔢 ASN (мережа)</span><span class="info-value mono" id="asnVal">—</span></div>
+                <div class="info-row"><span class="info-label">🏢 Організація</span><span class="info-value" id="orgVal">—</span></div>
+                <div class="info-row"><span class="info-label">🌐 Hostname</span><span class="info-value mono" id="hostVal">—</span></div>
+                <div class="info-row"><span class="info-label">📧 Abuse Contact</span><span class="info-value mono" id="abuseVal">—</span></div>
+                <div class="info-row"><span class="info-label">🗓️ Часовий пояс</span><span class="info-value" id="tzVal">—</span></div>
+                <div class="info-row"><span class="info-label">📍 Координати</span><span class="info-value mono" id="coordVal">—</span></div>
+            </div>
+            
+            <!-- Контейнер для карти -->
+            <div class="map-container" id="mapBox">
+                <span style="color:var(--text-muted);font-size:0.85rem">🗺️ Карта з'явиться після успішного визначення</span>
+            </div>
+            
+            <div class="status-box" id="ipStatus"></div>
+        </div>
+
+        <!-- КАРТКА 2: СЕРВІСИ ШВИДКОСТІ -->
+        <div class="card">
+            <h2>⚡ Сервіси вимірювання швидкості</h2>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:15px;">
+                Натисніть на сервіс, щоб відкрити тест у новій вкладці.
+            </p>
+            <div class="services-grid" id="servicesContainer"></div>
+            <p style="font-size:0.8rem; color:var(--text-muted); text-align:center; margin-top:10px;">
+                💡 Для торрентів швидкість може відрізнятися — використовуйте P2P-тести в самих клієнтах.
+            </p>
+        </div>
+    </div>
+
+    <footer>© 2026 IP Detector & Info Hub | ipinfo.io + Trusted Services</footer>
+
+    <script>
+        /* ==========================================================
+           🛠️ КОНФІГУРАЦІЯ ПОСИЛАНЬ НА СЕРВІСИ ШВИДКОСТІ
+           ========================================================== */
+        const SPEED_SERVICES = [
+            { name: "Speedtest.net (Ookla)", url: "https://www.speedtest.net/", icon: "🚀", desc: "Найпопулярніший у світі. Детальна статистика." },
+            { name: "Fast.com (Netflix)", url: "https://fast.com/", icon: "🎬", desc: "Ідеальний для перевірки відео." },
+            { name: "Cloudflare Speed Test", url: "https://speed.cloudflare.com/", icon: "☁️", desc: "Тест від CDN-провайдера." },
+            { name: "Google Fiber Test", url: "https://www.google.com/search?q=internet+speed+test", icon: "🔍", desc: "Вбудований тест від Google." },
+            { name: "2ip.ua Speedtest", url: "https://2ip.ua/ua/services/ip-service/speedtest", icon: "🇺", desc: "Український сервіс. Локальні сервери." },
+            { name: "Speedtest.net (RU/UA)", url: "https://www.speedtest.net/ru", icon: "🌍", desc: "Міжнародний сервіс з локалізацією." },
+            { name: "Speedtest.org.ua", url: "https://speedtest.org.ua/ua", icon: "🇺🇦", desc: "Український портал тесту швидкості." },
+            { name: "Speedtest.net.ua", url: "https://speedtest.net.ua/ua/", icon: "🇺🇦", desc: "Оптимізовано для українських провайдерів." }
+        ];
+
+        /* ==========================================================
+           🔹 РЕНДЕРИНГ СЕРВІСІВ
+           ========================================================== */
+        function renderServices() {
+            const container = document.getElementById('servicesContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            SPEED_SERVICES.forEach(s => {
+                const card = document.createElement('a');
+                card.href = s.url; card.target = '_blank'; card.rel = 'noopener noreferrer';
+                card.className = 'service-card';
+                card.innerHTML = `<span class="service-icon">${s.icon}</span><span class="service-name">${s.name}</span><span class="service-desc">${s.desc}</span><span class="service-btn">Запустити</span>`;
+                container.appendChild(card);
+            });
+        }
+
+        /* ==========================================================
+           🔹 РОЗШИРЕНЕ ВИЗНАЧЕННЯ IP
+           ========================================================== */
+        async function detectIP(customIP=null) {
+            const sE = document.getElementById('ipStatus');
+            const iE = document.getElementById('ipVal');
+            
+            iE.textContent = customIP ? `🔍 Пошук ${customIP}...` : '⏳ Визначається...';
+            sE.textContent = ''; sE.className = 'status-box';
+
+            // Скидаємо поля
+            ['countryVal','cityVal','regionVal','postalVal','ispVal','asnVal','orgVal','hostVal','abuseVal','tzVal','coordVal'].forEach(id => {
+                document.getElementById(id).textContent = '—';
+            });
+            // Скидаємо карту
+            document.getElementById('mapBox').innerHTML = '<span style="color:var(--text-muted);font-size:0.85rem">🗺️ Карта з\'явиться після успішного визначення</span>';
+
+            try {
+                sE.textContent = '🔄 Запит до ipinfo.io...';
+                const ctrl = new AbortController();
+                const timeout = setTimeout(() => ctrl.abort(), 8000);
+                
+                const url = customIP ? `https://ipinfo.io/${customIP}/json` : 'https://ipinfo.io/json';
+                const res = await fetch(url, { signal: ctrl.signal });
+                clearTimeout(timeout);
+                
+                if (!res.ok) throw new Error(res.status === 404 ? 'IP не знайдено' : `HTTP ${res.status}`);
+                const d = await res.json();
+                if (d.error) throw new Error(d.error.title || d.error.message);
+
+                // === ЗАПОВНЕННЯ ПОЛІВ ===
+                document.getElementById('ipVal').textContent = d.ip;
+                document.getElementById('countryVal').textContent = d.country ? `${d.country_name || d.country} ${getFlag(d.country)}` : '—';
+                document.getElementById('cityVal').textContent = d.city || '—';
+                document.getElementById('regionVal').textContent = d.region || '—';
+                document.getElementById('postalVal').textContent = d.postal || '—';
+                document.getElementById('ispVal').textContent = d.org || d.asn || '—';
+                
+                document.getElementById('asnVal').textContent = d.asn ? `AS${d.asn}` : (d.bogon ? 'Локальна мережа' : '—');
+                
+                const org = d.company?.name || d.hosting?.name || (d.org && !d.org.includes('AS') ? d.org : null);
+                document.getElementById('orgVal').textContent = org || '—';
+                
+                document.getElementById('hostVal').textContent = d.hostname || '—';
+                document.getElementById('abuseVal').textContent = d.abuse?.email || '—';
+                document.getElementById('tzVal').textContent = d.timezone || '—';
+                
+                // === РОБОТА З КАРТОЮ ===
+                if (d.loc) {
+                    document.getElementById('coordVal').textContent = d.loc;
+                    const [lat, lon] = d.loc.split(',');
+                    
+                    // Розраховуємо bbox (межі карти), щоб показати більший район
+                    const delta = 0.04; // Збільшуємо масштаб (близько 4-5 км)
+                    const bbox = `${parseFloat(lon)-delta},${parseFloat(lat)-delta},${parseFloat(lon)+delta},${parseFloat(lat)+delta}`;
+                    
+                    // Створюємо HTML для карти з анімованим маркером
+                    const mapHTML = `
+                        <div style="position:relative; width:100%; height:100%;">
+                            <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}" loading="lazy"></iframe>
+                            <div class="map-marker" title="IP знаходиться тут">📍</div>
+                        </div>
+                    `;
+                    document.getElementById('mapBox').innerHTML = mapHTML;
+                } else {
+                    document.getElementById('coordVal').textContent = '—';
+                }
+
+                sE.textContent = customIP ? `✅ Дані для ${d.ip}` : '✅ Ваш IP визначено';
+                sE.className = 'status-box success';
+
+            } catch(e) {
+                console.warn('IP lookup failed:', e);
+                iE.textContent = '❌ Помилка';
+                sE.textContent = `⚠️ ${e.message}. Перевірте інтернет або формат IP.`;
+                sE.className = 'status-box error';
+            }
+        }
+
+        function getFlag(countryCode) {
+            if (!countryCode || countryCode.length !== 2) return '';
+            const codePoints = countryCode.toUpperCase().split('').map(c => 127397 + c.charCodeAt());
+            return String.fromCodePoint(...codePoints);
+        }
+
+        function lookupManualIP() {
+            const v = document.getElementById('manualIpInput').value.trim();
+            if (!v) {
+                document.getElementById('ipStatus').textContent = '⚠️ Введіть IP-адресу';
+                document.getElementById('ipStatus').className = 'status-box error';
+                return;
+            }
+            const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$|^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+            if (!ipRegex.test(v)) {
+                document.getElementById('ipStatus').textContent = '⚠️ Некоректний формат IP';
+                document.getElementById('ipStatus').className = 'status-box error';
+                return;
+            }
+            detectIP(v);
+        }
+
+        /* ==========================================================
+           🔹 УПРАВЛІННЯ ТЕМОЮ
+           ========================================================== */
+        function loadTheme() { const t=localStorage.getItem('theme')||'dark'; document.documentElement.setAttribute('data-theme',t); updateThemeIcon(t); }
+        function toggleTheme() { const c=document.documentElement.getAttribute('data-theme'); const n=c==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',n); localStorage.setItem('theme',n); updateThemeIcon(n); }
+        function updateThemeIcon(t) { document.getElementById('themeIcon').textContent=t==='dark'?'🌙':'☀️'; }
+
+        // ІНІЦІАЛІЗАЦІЯ
+        window.addEventListener('DOMContentLoaded', ()=>{ 
+            loadTheme(); 
+            detectIP(); 
+            renderServices(); 
+        });
+    </script>
+</body>
+</html>

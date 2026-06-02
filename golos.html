@@ -1,0 +1,35 @@
+<!-- АВТОНОМНА ФОРМА ГОЛОСУВАННЯ (працює з електронною поштою) -->
+<div id="voteBlock" style="
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff5e6 0%, #ffffff 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  text-align: center;
+">
+  <h3 style="margin: 0 0 10px 0;">📊 Ваши оценки этого Сайта</h3>
+  <p>Как Вам этот Сайт?</p>
+
+  <!-- ✅ Адреса вже змінена на вашу pvipvi@i.ua -->
+  <form action="https://formsubmit.co/pvipvi@i.ua" method="POST">
+     <input type="hidden" name="_next" value="https://nashaeda.netlify.app">
+     <input type="hidden" name="_captcha" value="false">
+
+     <div style="margin-bottom: 20px;">
+        <label style="margin: 0 10px;">
+          <input type="radio" name="vote" value="Отличный" required> 🌟 Отличный
+        </label>
+        <label style="margin: 0 10px;">
+          <input type="radio" name="vote" value="Нормальный"> 👍 Нормальный
+        </label>
+        <label style="margin: 0 10px;">
+          <input type="radio" name="vote" value="Плохой"> 👎 Плохой
+        </label>
+    </div>
+
+    <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 10px 25px; border-radius: 30px; cursor: pointer;">✅ Проголосовать</button>
+  </form>
+  <p style="font-size: 12px; color: gray; margin-top: 15px;">Спасибо, что помогаете сделать сайт лучше!</p>
+</div>

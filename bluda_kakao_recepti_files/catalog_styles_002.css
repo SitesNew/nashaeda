@@ -1,0 +1,112 @@
+/* два верхних блочка*/
+div.infobox {width: 242px; height: 80px; font-family:Tahoma, Verdana, Arial; font-size: 11px; color:#333333; background: url(/catalog/images/infoblok_bg.gif) top left no-repeat; padding: 10px; line-height:13px; float:left; text-align: left; position: relative; margin-bottom: 0px;}
+
+/* блок всего каталога */
+div.Catalog {width: 100%;}
+div.Catalog a {font-size: 12px;}
+
+/* блоки новости, магазина, комментария, ввода */
+div.NewDiv, div.ShopDiv, div.CommentDiv, div.SubmitDiv { background:transparent url(/catalog/images/img1.gif) repeat-x scroll center top; font-size: 11px; color:#666666; border: 1px #ebebeb solid; background-color: #fefefe; padding: 10px; margin: 10px 0px 10px 0px;}
+
+/* подзаголовки "Отзывы", "Добавить отзыв/оценить", "Сообщить об ошибке" и т.д. */
+div.Catalog strong {margin: 10px 0px 8px 0px}
+/* абзацы */
+div.Catalog p {line-height: 1.3em; margin: 0px 0px 10px 0px}
+
+/* контейнер для блоков выбора*/
+div.ChoosesDiv {margin: 10px 0px 10px 0px}
+/* блок выбора*/
+div.Choose {color:#666666; font-size:11px; background-color: #f5f5f5; margin: 5px 0px 5px 0px;}
+div.Choose a:link, div.Choose a:hover, div.Choose a:active, div.Choose a:visited {color:#006699; text-decoration:underline; font-size:11px;}
+
+/* блоки заголовков магазина и новости*/
+div.ShopHeaderDiv, div.NewHeaderDiv {margin: 0px 0px 7px 0px}
+/* ссылки-заголовки магазина, новости*/
+a.ShopHeaderLink, a.NewHeaderLink {text-decoration: underline; font-size: 16px; font-weight: bold; font-family: Arial}
+div.Catalog a.ShopHeaderLink {color: #336666; font-size: 16px}
+div.Catalog a.NewHeaderLink {color: #990033; font-size: 16px}
+
+/* блоки "телефон", "метро", "веб-сайт" */
+div.ShopItemDiv {color:#333333; font-size:12px; font-family: Tahoma, Verdana, Arial; margin: 2px 0px 2px 0px}
+
+/* блок анонса новости */
+div.NewNoticeDiv {margin: 7px 0px 7px 0px; color: #333333; font-family: "Times New Roman", Georgia, Gautami; text-align: justify; font-size: 14px; font-weight: bold;}
+
+/* блок основного текста новости */
+div.NewDescriptionDiv {margin: 0px 0px 0px 0px; color: #333333; font-family: "Times New Roman", Georgia, Gautami; font-size: 15px;}
+div.NewDescriptionDiv p {line-height: 1.3em; text-indent: 0px; margin: 0em 0px 0.5em 0px; text-align: justify;}
+
+/* блок "новость со ссылкой на..." */
+div.NewLinkDiv {margin: 3px 0px 3px 0px; color: #333333; font-size: 12px; text-align: right; clear: left;}
+
+/* блок с данными "отзывов", "просмотров", ссылка подробнее и т.д. */
+div.BottomInfoDiv {margin: 8px 0px 0px 0px; line-height: 1.4em;}
+div.BottomInfoDiv a:link, div.BottomInfoDiv a:hover, div.BottomInfoDiv a:active, div.BottomInfoDiv a:visited {color:#006699; text-decoration:underline; font-size:11px;}
+
+/* таблицы с данными о фирме*/
+table.ShopInfoTable {}
+table.ShopInfoTable td{font-family:Tahoma,Verdana,Arial; font-size:12px; color:#333333; padding: 4px; height: 20px; vertical-align: top; text-align: left;}
+table.ShopInfoTable th {height: 5px;}   /* пространство между некоторыми пунктами*/
+table.ShopInfoTable p {line-height: 1.3em; text-indent: 0px; margin: 0em 0px 0.4em 0px; text-align: justify;} /* абзац описания */
+
+/*div.cat_links a {color:#006699; text-decoration:underline; font-size:11px; font-family:Tahoma, Verdana, Arial;}*/
+
+/* блок комментария*/
+div.CommentDiv {font-size: 12px; color:#333333;}
+div.CommentDiv p {text-indent: 0px; margin: 3px 0px 3px 0px; text-align: justify;}
+div.CommentDiv span.Date {font-size: 11px; color:#666666;} /* дата комментария */
+
+/* блок формы - добавление комментария, сообщение об ошибке и т.д.*/
+div.SubmitDiv {font-size: 13px; color:#666666;}
+div.SubmitDiv p {margin: 15px 0px 15px 0px;}
+/* таблица-каркас блока формы*/
+table#SubmitTable {margin: 5px 0px 5px 0px; font-size: 12pt;}
+table#SubmitTable td {padding: 2px 0px 2px 0px; vertical-align: top;}
+
+/* ширина полей ввода*/
+.ShortInput { width: 70px;}   /* защитный код*/
+.MiddleInput {width: 210px;}              /* имя, e-mail*/
+.LongInput {width: 420px;}     /* текст отзыва, новости, описания фирмы и т.д.*/
+
+div.Catalog input {font-family:Tahoma,Verdana,Arial; font-size:11px; color:#000000;}
+/* радиобатон */
+div.Catalog input.r {border: 0px solid #afafaf; vertical-align: middle;}
+div.Catalog select {font-family:verdana; font-size:11px;}
+div.Catalog textarea {font-family:verdana; font-size:11px;}
+
+/* ссылка "показать на карте" */
+a.maplink, a.maplink:hover {text-decoration: underline; cursor: pointer;}
+a.maplink {color: #006699}
+a.maplink:hover {color: #FF0000;}
+
+/* логотип карты */
+img.MapImg {position: relative; top: -5px; margin: 0px; vertical-align: top; margin-bottom: -5px;}
+/* логотип метро */
+img.MetroImg {position: relative; top: -2px; margin: 0px; vertical-align: top;}
+
+
+/* маленькие звездочки в блоке лучшая/худшая фирмы */
+img.LittleStar{position: relative; top: 1px;}
+/* ссылка на организацию в блоке лучшая/худшая фирмы */
+a.ShopRating {}
+
+
+/* ОПИСАНИЕ СТИЛЕЙ БЛОКА КАРТИНОК ДЛЯ ОРГАНИЗАЦИИ И НОВОСТИ */
+/* контейнер для блока картинок*/
+div.NewImagesDiv, div.ShopImagesDiv{width: auto; text-align: center; padding: 7px 0px 7px 0px; clear: left;}
+/* блок картинок*/
+div.NewImages, div.ShopImages {width: 650px; background: #fbfbfb; border: 1px dashed #cccccc; padding-left: 7px; padding-right: 7px; margin-left:auto; margin-right: auto}
+/* контейнер для каждой картинки*/
+div.NewImageDiv, div.ShopImageDiv {margin: 7px;}
+/* картинка */
+img.NewImage, img.ShopImage{border: #999999 solid 1px}
+/* блок комментария к картинке */
+div.NewImageCommentDiv, div.ShopImageCommentDiv {font-size: 11px; margin: 5px 0px 5px 0px;}
+
+/* сообщения об ошибках при добавлении комментария, организации, новости и т.д.*/
+.Error {font-size: 14px; margin: 15px 0px 15px 0px; color: #990033; position: relative}
+
+/* форма поиска */
+.searchstroke {	align: right; border: 1px; width: 100%; font-size: 10pt; font-family:Tahoma, Verdana, Arial;
+	}
+.searchstroke input.search{	 border: 1px black solid;}
